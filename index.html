@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#180e1a"><title>Operation: The Final Fuckening</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;padding:25px;background:radial-gradient(ellipse at top,#4d2440,#180e1a 72%);color:#fff;font-family:system-ui,-apple-system,sans-serif;text-align:center}main{max-width:560px;width:100%}.tag{font-size:.82rem;letter-spacing:.22em;color:#f9aac2;font-weight:800}h1{font-size:clamp(1.8rem,7vw,3rem);margin:12px 0 24px;line-height:1.12}#days{font-size:clamp(7rem,29vw,12rem);font-weight:900;letter-spacing:-.07em;line-height:1;text-shadow:0 0 55px #e35c8d66}.sub{font-size:clamp(1.2rem,5vw,1.7rem);font-weight:850;line-height:1.25}.fine{font-size:.76rem;color:#ae9bac;margin-top:30px}
+</style></head><body><main><div class="tag">OPERATION:</div><h1>THE FINAL FUCKENING</h1><div id="days" aria-live="polite">46</div><div class="sub" id="sub">WORKDAYS UNTIL THE BULLSHIT IS OVER</div><div class="fine">Weekends, Thanksgiving, the Friday after, Christmas, and New Year's Day excluded.</div></main>
+<script>
+const holidays=new Set(['2026-11-26','2026-11-27','2026-12-25','2027-01-01']);
+const start=new Date(2026,10,2),end=new Date(2027,0,8);
+function key(d){return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')}
+function count(a,b){let n=0;for(let d=new Date(a);d<=b;d.setDate(d.getDate()+1))if(d.getDay()!==0&&d.getDay()!==6&&!holidays.has(key(d)))n++;return n}
+const total=count(start,end);
+function update(){const now=new Date(),today=new Date(now.getFullYear(),now.getMonth(),now.getDate());const remaining=today>end?0:count(today<start?start:today,end);document.getElementById('days').textContent=remaining;if(!remaining)document.getElementById('sub').textContent='THE BULLSHIT IS OVER. FREEDOM ACHIEVED.'}
+update();document.addEventListener('visibilitychange',update);setInterval(update,60000);
+</script></body></html>
